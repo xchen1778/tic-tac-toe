@@ -1,67 +1,83 @@
 import { createContext, useState } from "react";
+import { emptyBoard } from "../constants/emptyBoard";
+import { winningCombos } from "../constants/winningCombos";
 
 const GameContext = createContext();
 
 export function GameContextProvider({ children }) {
-  const beginningBoard = Array.from(Array(9).keys());
-  const [entries, setEntries] = useState(beginningBoard);
-  const [player, setPlayer] = useState("X");
-  const [moves, setMoves] = useState(0);
-  const [result, setResult] = useState("");
+  const [playerMode, setPlayerMode] = useState("");
+  const [mode, setMode] = useState("");
+  const [entries, setEntries] = useState(emptyBoard);
+  const [player, setPlayer] = useState(true);
+  const [count, setCount] = useState(0);
+  const [endResult, setEndResult] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [winningIndeices, setWinningIndeices] = useState([]);
+  const [scores, setScores] = useState({ X: 0, O: 0, Drew: 0 });
 
-  const winningCombos = [
-    [0, 1, 2],
-    [3, 4, 5],
-    [6, 7, 8],
-    [0, 3, 6],
-    [1, 4, 7],
-    [2, 5, 8],
-    [0, 4, 8],
-    [2, 4, 6],
-  ];
-
-  function checkResult(player, newEntries) {
-    let allPlayerPositions = [];
-    for (let i = 0; i < newEntries.length; i++) {
-      if (newEntries[i] === player) {
-        allPlayerPositions.push(i);
+  function checkEndResult(board, player) {
+    let allPositions = [];
+    for (let i = 0; i < board.length; i++) {
+      if (board[i] === player) {
+        allPositions.push(i);
       }
     }
-
     for (let combo of winningCombos) {
-      if (combo.every((index) => allPlayerPositions.includes(index))) {
+      if (combo.every((index) => allPositions.includes(index))) {
         setWinningIndeices(combo);
-        setResult(player);
+        setEndResult(player);
         setGameOver(true);
+        setScores((scores) => {
+          scores[player] += 1;
+          return scores;
+        });
         return;
       }
     }
 
-    if (moves === 8) {
-      setResult("Draw");
+    if (count === 8) {
+      setEndResult("Drew");
       setGameOver(true);
-      return;
+      setScores((scores) => {
+        scores.Drew += 1;
+        return scores;
+      });
     }
+  }
+
+  function resetBoard() {
+    setGameOver(false);
+    setPlayer(true);
+    setEntries(emptyBoard);
+    setWinningIndeices([]);
+    setEndResult("");
+    setCount(0);
   }
 
   return (
     <GameContext.Provider
       value={{
+        playerMode,
+        setPlayerMode,
+        mode,
+        setMode,
+        emptyBoard,
         entries,
         setEntries,
         player,
         setPlayer,
-        moves,
-        setMoves,
-        result,
-        setResult,
+        count,
+        setCount,
+        endResult,
+        setEndResult,
         gameOver,
         setGameOver,
         winningIndeices,
         setWinningIndeices,
-        checkResult,
+        scores,
+        setScores,
+        checkEndResult,
+        resetBoard,
       }}
     >
       {children}

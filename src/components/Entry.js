@@ -3,29 +3,36 @@ import GameContext from "../contexts/game.context";
 
 function Entry({ entry, index }) {
   const {
+    playerMode,
     entries,
     setEntries,
+    player,
     setPlayer,
-    moves,
-    setMoves,
-    checkResult,
-    gameOver,
+    checkEndResult,
     winningIndeices,
+    gameOver,
+    setCount,
   } = useContext(GameContext);
 
+  // Human Playing
   function handleClick() {
     const newEntries = [...entries];
-    newEntries[index] = "X";
+    newEntries[index] = player ? "X" : "O";
     setEntries(newEntries);
-    checkResult("X", newEntries);
-    setMoves(moves + 1);
-    setPlayer("O");
+    checkEndResult(newEntries, player ? "X" : "O");
+    setCount((count) => count + 1);
+    setPlayer(!player);
   }
 
   return (
     <button
       onClick={handleClick}
-      disabled={entry === "X" || entry === "O" || gameOver}
+      disabled={
+        entry === "X" ||
+        entry === "O" ||
+        gameOver ||
+        (player === false && playerMode === "single")
+      }
       className={winningIndeices.includes(index) ? "winner" : ""}
     >
       {entry === "X" || entry === "O" ? entry : ""}
