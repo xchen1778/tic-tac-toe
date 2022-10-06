@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function PlayerSelection() {
   const navigate = useNavigate();
-  const { setPlayerMode } = useContext(GameContext);
+  const { setPlayerMode, setPlayer, setMainPlayer } = useContext(GameContext);
   return (
     <div>
       <button
@@ -18,6 +18,8 @@ function PlayerSelection() {
       <button
         onClick={() => {
           setPlayerMode("multi");
+          setPlayer(0);
+          setMainPlayer(0);
           navigate("/game");
         }}
       >

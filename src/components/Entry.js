@@ -6,6 +6,8 @@ function Entry({ entry, index }) {
     playerMode,
     entries,
     setEntries,
+    mainPlayer,
+    players,
     player,
     setPlayer,
     checkEndResult,
@@ -17,11 +19,11 @@ function Entry({ entry, index }) {
   // Human Playing
   function handleClick() {
     const newEntries = [...entries];
-    newEntries[index] = player ? "X" : "O";
+    newEntries[index] = players[player];
     setEntries(newEntries);
-    checkEndResult(newEntries, player ? "X" : "O");
+    checkEndResult(newEntries, players[player]);
     setCount((count) => count + 1);
-    setPlayer(!player);
+    setPlayer(player === 0 ? 1 : 0);
   }
 
   return (
@@ -31,7 +33,7 @@ function Entry({ entry, index }) {
         entry === "X" ||
         entry === "O" ||
         gameOver ||
-        (player === false && playerMode === "single")
+        (player !== mainPlayer && playerMode === "single")
       }
       className={winningIndeices.includes(index) ? "winner" : ""}
     >

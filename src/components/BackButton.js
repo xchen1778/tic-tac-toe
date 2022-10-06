@@ -3,8 +3,7 @@ import GameContext from "../contexts/game.context";
 import { useNavigate } from "react-router-dom";
 
 function BackButton() {
-  const { playerMode, setPlayerMode, setMode, resetBoard, setScores } =
-    useContext(GameContext);
+  const { resetBoard, setScores } = useContext(GameContext);
   const navigate = useNavigate();
   return (
     <button
@@ -14,7 +13,7 @@ function BackButton() {
         navigate(-1);
       }}
     >
-      {playerMode === "single" ? "Switch Mode" : "Go Back"}
+      Go Back
     </button>
   );
 }

@@ -1,14 +1,16 @@
 import { createContext, useState } from "react";
 import { emptyBoard } from "../constants/emptyBoard";
 import { winningCombos } from "../constants/winningCombos";
+import { players } from "../constants/playerCode";
 
 const GameContext = createContext();
 
 export function GameContextProvider({ children }) {
   const [playerMode, setPlayerMode] = useState("single");
   const [mode, setMode] = useState("easy");
+  const [mainPlayer, setMainPlayer] = useState(0);
   const [entries, setEntries] = useState(emptyBoard);
-  const [player, setPlayer] = useState(true);
+  const [player, setPlayer] = useState(0);
   const [count, setCount] = useState(0);
   const [endResult, setEndResult] = useState("");
   const [gameOver, setGameOver] = useState(false);
@@ -46,9 +48,9 @@ export function GameContextProvider({ children }) {
   }
 
   function resetBoard() {
-    setGameOver(false);
-    setPlayer(true);
     setEntries(emptyBoard);
+    setPlayer(0);
+    setGameOver(false);
     setWinningIndeices([]);
     setEndResult("");
     setCount(0);
@@ -61,9 +63,12 @@ export function GameContextProvider({ children }) {
         setPlayerMode,
         mode,
         setMode,
+        mainPlayer,
+        setMainPlayer,
         emptyBoard,
         entries,
         setEntries,
+        players,
         player,
         setPlayer,
         count,

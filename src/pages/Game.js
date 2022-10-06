@@ -1,17 +1,17 @@
 import BackButton from "../components/BackButton";
-import PlayerIndicator from "../components/PlayerIndicator";
 import Board from "../components/Board";
 import ActionButtons from "../components/ActionButtons";
 import ScoreDisplay from "../components/ScoreDisplay";
+import ResultMessage from "../components/ResultMessage";
 
 function Game() {
   return (
     <div className="game">
       <BackButton />
-      <PlayerIndicator />
+      <ScoreDisplay />
       <Board />
       <ActionButtons />
-      <ScoreDisplay />
+      <ResultMessage />
     </div>
   );
 }

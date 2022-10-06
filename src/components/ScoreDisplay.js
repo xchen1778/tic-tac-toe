@@ -2,15 +2,20 @@ import { useContext } from "react";
 import GameContext from "../contexts/game.context";
 
 function ScoreDisplay() {
-  const { endResult, scores } = useContext(GameContext);
+  const { scores, playerMode, players, player, mainPlayer, gameOver } =
+    useContext(GameContext);
+
   return (
     <div>
-      <h1>
-        {endResult === "Drew" || !endResult ? endResult : `${endResult} Wins!`}
-      </h1>
-      <h2>{`X: ${scores.X}`}</h2>
-      <h2>{`O: ${scores.O}`}</h2>
-      <h2>{`Drew: ${scores.Drew}`}</h2>
+      <span className={player === mainPlayer && !gameOver ? "active" : ""}>
+        {playerMode === "single" ? "You" : "Player 1"}
+      </span>
+      <span>{`${scores[players[mainPlayer]]} VS ${
+        scores[mainPlayer === 0 ? "O" : "X"]
+      }`}</span>
+      <span className={player !== mainPlayer && !gameOver ? "active" : ""}>
+        {playerMode === "single" ? "AI" : "Player 2"}
+      </span>
     </div>
   );
 }

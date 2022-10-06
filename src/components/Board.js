@@ -7,6 +7,8 @@ function Board() {
   const {
     playerMode,
     mode,
+    mainPlayer,
+    players,
     player,
     entries,
     setEntries,
@@ -20,30 +22,34 @@ function Board() {
   useEffect(() => {
     if (playerMode === "single") {
       setTimeout(() => {
-        if (!gameOver && player === false && mode === "easy") {
+        if (!gameOver && player !== mainPlayer && mode === "easy") {
+          console.log("ai");
           const availSpots = entries.filter(
             (entry) => entry !== "X" && entry !== "O"
           );
           const randomNum = Math.floor(Math.random() * availSpots.length);
           const randomIndex = availSpots[randomNum];
           const newEntries = [...entries];
-          newEntries[randomIndex] = "O";
+          newEntries[randomIndex] = players[player];
           setEntries(newEntries);
-          checkEndResult(newEntries, "O");
+          checkEndResult(newEntries, players[player]);
           setCount((count) => count + 1);
-          setPlayer(!player);
-        } else if (!gameOver && player === false && mode === "difficult") {
+          setPlayer(player === 0 ? 1 : 0);
+        } else if (!gameOver && player !== mainPlayer && mode === "hard") {
           const newEntries = [...entries];
-          const [_nextMoveScore, nextMove] = minimax(newEntries, "O");
-          newEntries[nextMove] = "O";
+          const [_nextMoveScore, nextMove] = minimax(
+            newEntries,
+            players[player]
+          );
+          newEntries[nextMove] = players[player];
           setEntries(newEntries);
-          checkEndResult(newEntries, "O");
+          checkEndResult(newEntries, players[player]);
           setCount((count) => count + 1);
-          setPlayer(!player);
+          setPlayer(player === 0 ? 1 : 0);
         }
-      }, 500);
+      }, 300);
     }
-  }, [player]);
+  }, [player, gameOver]);
 
   return (
     <div className="board">
