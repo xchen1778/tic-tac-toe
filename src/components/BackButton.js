@@ -9,11 +9,6 @@ function BackButton() {
   return (
     <button
       onClick={() => {
-        if (playerMode === "single") {
-          setMode("");
-        } else if (playerMode === "multi") {
-          setPlayerMode("");
-        }
         resetBoard();
         setScores({ X: 0, O: 0, Drew: 0 });
         navigate(-1);

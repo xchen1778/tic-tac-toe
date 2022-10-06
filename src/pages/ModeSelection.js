@@ -9,7 +9,6 @@ function ModeSelection() {
     <div>
       <button
         onClick={() => {
-          setPlayerMode("");
           navigate(-1);
         }}
       >

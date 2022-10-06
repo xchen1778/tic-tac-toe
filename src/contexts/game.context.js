@@ -5,8 +5,8 @@ import { winningCombos } from "../constants/winningCombos";
 const GameContext = createContext();
 
 export function GameContextProvider({ children }) {
-  const [playerMode, setPlayerMode] = useState("");
-  const [mode, setMode] = useState("");
+  const [playerMode, setPlayerMode] = useState("single");
+  const [mode, setMode] = useState("easy");
   const [entries, setEntries] = useState(emptyBoard);
   const [player, setPlayer] = useState(true);
   const [count, setCount] = useState(0);

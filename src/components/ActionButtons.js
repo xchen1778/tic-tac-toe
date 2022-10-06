@@ -10,8 +10,6 @@ function ActionButtons() {
   function handleRestart() {
     resetBoard();
     setScores({ X: 0, O: 0, Drew: 0 });
-    setPlayerMode("");
-    setMode("");
     navigate("/");
   }
 
