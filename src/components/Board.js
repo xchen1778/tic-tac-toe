@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import GameContext from "../contexts/game.context";
 import { minimax } from "../functions/minimax";
 import Entry from "./Entry";
@@ -17,24 +17,56 @@ function Board() {
     setCount,
     gameOver,
   } = useContext(GameContext);
+  const [aiPrevMove, setAiPrevMove] = useState(0);
+
+  function aiRandomMove(board, player, availSpots) {
+    const randomNum = Math.floor(Math.random() * availSpots.length);
+    const randomIndex = availSpots[randomNum];
+    setAiPrevMove(randomIndex);
+    board[randomIndex] = players[player];
+  }
+
+  function nextTurn(board) {
+    setEntries(board);
+    checkEndResult(board, players[player]);
+    setCount((count) => count + 1);
+    setPlayer(player === 0 ? 1 : 0);
+  }
 
   // AI playing
   useEffect(() => {
     if (playerMode === "single") {
       setTimeout(() => {
         if (!gameOver && player !== mainPlayer && mode === "easy") {
-          console.log("ai");
           const availSpots = entries.filter(
             (entry) => entry !== "X" && entry !== "O"
           );
-          const randomNum = Math.floor(Math.random() * availSpots.length);
-          const randomIndex = availSpots[randomNum];
           const newEntries = [...entries];
-          newEntries[randomIndex] = players[player];
-          setEntries(newEntries);
-          checkEndResult(newEntries, players[player]);
-          setCount((count) => count + 1);
-          setPlayer(player === 0 ? 1 : 0);
+          aiRandomMove(newEntries, player, availSpots);
+          nextTurn(newEntries);
+        } else if (!gameOver && player !== mainPlayer && mode === "medium") {
+          const availSpots = entries.filter(
+            (entry) => entry !== "X" && entry !== "O"
+          );
+          const newEntries = [...entries];
+          if (aiPrevMove % 2 === 0) {
+            const oddIndeices = availSpots.filter((spot) => spot % 2 !== 0);
+            if (oddIndeices.length) {
+              setAiPrevMove(oddIndeices[0]);
+              newEntries[oddIndeices[0]] = players[player];
+            } else {
+              aiRandomMove(newEntries, player, availSpots);
+            }
+          } else {
+            const evenIndeices = availSpots.filter((spot) => spot % 2 === 0);
+            if (evenIndeices.length) {
+              setAiPrevMove(evenIndeices[0]);
+              newEntries[evenIndeices[0]] = players[player];
+            } else {
+              aiRandomMove(newEntries, player, availSpots);
+            }
+          }
+          nextTurn(newEntries);
         } else if (!gameOver && player !== mainPlayer && mode === "hard") {
           const newEntries = [...entries];
           const [_nextMoveScore, nextMove] = minimax(
@@ -42,10 +74,7 @@ function Board() {
             players[player]
           );
           newEntries[nextMove] = players[player];
-          setEntries(newEntries);
-          checkEndResult(newEntries, players[player]);
-          setCount((count) => count + 1);
-          setPlayer(player === 0 ? 1 : 0);
+          nextTurn(newEntries);
         }
       }, 300);
     }

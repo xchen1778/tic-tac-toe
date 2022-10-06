@@ -1,1 +1,4 @@
-# Tic Tac Toe Game (Work in Progress)
+# Tic Tac Toe Game
+
+- Functionality ✅
+- Design (Work in Progress)

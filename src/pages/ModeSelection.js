@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 function ModeSelection() {
   const navigate = useNavigate();
-  const { setMode, setMainPlayer, resetBoard, setScores } =
+  const { mode, setMode, mainPlayer, setMainPlayer, resetBoard, setScores } =
     useContext(GameContext);
 
   function handleSubmit(e) {
@@ -35,8 +35,10 @@ function ModeSelection() {
             defaultChecked
           />
           <label htmlFor="mode1">Easy</label>
-          <input type="radio" name="mode" value="hard" id="mode2" />
-          <label htmlFor="mode2">Hard</label>
+          <input type="radio" name="mode" value="medium" id="mode2" />
+          <label htmlFor="mode2">Medium</label>
+          <input type="radio" name="mode" value="hard" id="mode3" />
+          <label htmlFor="mode3">Hard</label>
         </div>
         <h2>Select A Player:</h2>
         <div onChange={(e) => setMainPlayer(parseInt(e.target.value))}>
@@ -44,17 +46,14 @@ function ModeSelection() {
             type="radio"
             name="playerMode"
             value={0}
-            id="playerMode1"
+            id="player1"
             defaultChecked
           />
-          <label htmlFor="playerMode1">X</label>
-          <input type="radio" name="playerMode" value={1} id="playerMode2" />
-          <label htmlFor="playerMode2">O</label>
+          <label htmlFor="player1">X</label>
+          <input type="radio" name="playerMode" value={1} id="player2" />
+          <label htmlFor="player2">O</label>
         </div>
-
-        <div>
-          <button type="submit">Submit</button>
-        </div>
+        <button>Start Game!</button>
       </form>
     </div>
   );
