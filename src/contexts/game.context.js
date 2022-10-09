@@ -6,6 +6,9 @@ import { players } from "../constants/playerCode";
 const GameContext = createContext();
 
 export function GameContextProvider({ children }) {
+  const [move, setMove] = useState(
+    JSON.parse(window.localStorage.getItem("backgroundText"))
+  );
   const [playerMode, setPlayerMode] = useState("single");
   const [mode, setMode] = useState("easy");
   const [mainPlayer, setMainPlayer] = useState(0);
@@ -59,6 +62,8 @@ export function GameContextProvider({ children }) {
   return (
     <GameContext.Provider
       value={{
+        move,
+        setMove,
         playerMode,
         setPlayerMode,
         mode,

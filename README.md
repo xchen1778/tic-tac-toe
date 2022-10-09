@@ -1,4 +1,4 @@
 # Tic Tac Toe Game
 
 - Functionality ✅
-- Design (Work in Progress)
+- Design (Desktop Version ✅ Mobile Version in Progress)

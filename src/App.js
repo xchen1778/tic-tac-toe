@@ -1,17 +1,21 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import BackgroundText from "./components/BackgroundText";
+import Landing from "./pages/Landing";
 import PlayerSelection from "./pages/PlayerSelection";
-import ModeSelection from "./pages/ModeSelection";
 import Game from "./pages/Game";
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<PlayerSelection />} />
-        <Route path="/mode-selection" element={<ModeSelection />} />
-        <Route path="/game" element={<Game />} />
-      </Routes>
-    </Router>
+    <div className="app">
+      <Router>
+        <BackgroundText />
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/player-selection" element={<PlayerSelection />} />
+          <Route path="/game" element={<Game />} />
+        </Routes>
+      </Router>
+    </div>
   );
 }
 

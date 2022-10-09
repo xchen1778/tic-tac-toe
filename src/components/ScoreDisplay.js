@@ -6,16 +6,31 @@ function ScoreDisplay() {
     useContext(GameContext);
 
   return (
-    <div>
-      <span className={player === mainPlayer && !gameOver ? "active" : ""}>
-        {playerMode === "single" ? "You" : "Player 1"}
-      </span>
-      <span>{`${scores[players[mainPlayer]]} VS ${
-        scores[mainPlayer === 0 ? "O" : "X"]
-      }`}</span>
-      <span className={player !== mainPlayer && !gameOver ? "active" : ""}>
-        {playerMode === "single" ? "AI" : "Player 2"}
-      </span>
+    <div className="absolute left-14 bottom-8 flex flex-col gap-4">
+      <div className="player-score flex justify-between items-center">
+        <span
+          className={`font-display text-creamwhite text-7xl transition-colors duration-300 ease-out ${
+            player === mainPlayer && !gameOver ? "text-yellow" : ""
+          }`}
+        >
+          {playerMode === "single" ? "you" : "p1"}
+        </span>
+        <span className="font-body text-creamwhite text-8xl">{`${
+          scores[players[mainPlayer]]
+        }`}</span>
+      </div>
+      <div className="player-score flex justify-between items-center">
+        <span
+          className={`font-display text-creamwhite text-7xl transition-colors duration-300 ease-out ${
+            player !== mainPlayer && !gameOver ? "text-yellow" : ""
+          }`}
+        >
+          {playerMode === "single" ? "ai" : "p2"}
+        </span>
+        <span className="font-body text-creamwhite text-8xl">
+          {`${scores[mainPlayer === 0 ? "O" : "X"]}`}
+        </span>
+      </div>
     </div>
   );
 }

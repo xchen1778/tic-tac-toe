@@ -1,0 +1,93 @@
+.marquee1,
+.marquee2,
+.marquee3,
+.marquee4,
+.marquee5,
+.marquee6 {
+  div {
+    font-size: 21vh;
+    span {
+      &:hover {
+        color: #ededed;
+      }
+    }
+  }
+}
+
+.marquee1-sub,
+.marquee3-sub,
+.marquee5-sub {
+  div {
+    padding-left: 100%;
+    span {
+      &:hover {
+        color: #ededed;
+      }
+    }
+  }
+}
+
+.marquee1.move,
+.marquee2.move,
+.marquee3.move,
+.marquee4.move,
+.marquee5.move,
+.marquee6.move {
+  div {
+    animation: rightToleft 150s linear infinite;
+    span {
+      &:hover {
+        color: #242424;
+      }
+    }
+  }
+}
+
+.marquee1-sub.move,
+.marquee3-sub.move,
+.marquee5-sub.move {
+  div {
+    animation-delay: 75s;
+    span {
+      &:hover {
+        color: #242424;
+      }
+    }
+  }
+}
+
+.marquee2.move,
+.marquee4.move,
+.marquee6.move {
+  div {
+    animation: leftToright 150s linear infinite;
+  }
+}
+
+.marquee2-sub,
+.marquee4-sub,
+.marquee6-sub {
+  div {
+    margin-left: -100%;
+  }
+}
+
+.marquee2 {
+  top: 16.7vh;
+}
+
+.marquee3 {
+  top: 33.4vh;
+}
+
+.marquee4 {
+  top: 50.1vh;
+}
+
+.marquee5 {
+  top: 66.8vh;
+}
+
+.marquee6 {
+  top: 83.5vh;
+}

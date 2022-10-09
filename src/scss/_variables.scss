@@ -1,0 +1,93 @@
+@font-face {
+  font-family: "Balgin Regular";
+  font-weight: regular;
+  src: url("../../public/Balgin-Regular.ttf");
+}
+@font-face {
+  font-family: "Balgin Medium";
+  font-weight: medium;
+  src: url("../../public/Balgin-Medium.ttf");
+}
+@font-face {
+  font-family: "Balgin Bold";
+  font-weight: bold;
+  src: url("../../public/Balgin-Bold.ttf");
+}
+@font-face {
+  font-family: "Balgin ExtraBold";
+  font-weight: extrabold;
+  src: url("../../public/Balgin-ExtraBold.ttf");
+}
+
+@keyframes rightToleft {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-100%, 0);
+  }
+}
+
+@keyframes leftToright {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translate(100%, 0);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100%, 0);
+  }
+}
+
+@keyframes slideOutFull {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(100vw, 0);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slidetoleft {
+  0% {
+    right: 0;
+  }
+  100% {
+    right: 33.333333%;
+    width: 66.666667%;
+  }
+}

@@ -1,4 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./variables";
+@import "./resets";
 @import "./app";
+@import "./backgroundtext";
+@import "./landing";
+@import "./playerselection";
+@import "./modeselection";
+@import "./game";
 @import "./board";
 @import "./entry";
-@import "./playerindicator";
+@import "./againscreen";
+@import "./scoredisplay";
+
+body {
+  background-color: #222;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+}
+
+.fadeIn {
+  animation: fadeIn 500ms ease-out;
+}
+
+.fadeOut {
+  animation: fadeOut 500ms ease-out;
+}
+
+.fadeIn2 {
+  animation: fadeIn 300ms ease-out;
+}
+
+.fadeOut2 {
+  animation: fadeOut 300ms ease-out;
+}
+
+.slideIn {
+  animation: slideIn 500ms ease-out;
+}
+
+.slideOut {
+  animation: slideOut 500ms ease-out;
+}
+
+.slidetoleft {
+  animation: slidetoleft 400ms ease-out;
+
+  & * {
+    animation: fadeOut 400ms ease-out;
+  }
+}
+
+.slideOutFull {
+  animation: slideOutFull 500ms ease-out;
+}

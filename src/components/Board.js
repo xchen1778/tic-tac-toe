@@ -17,12 +17,11 @@ function Board() {
     setCount,
     gameOver,
   } = useContext(GameContext);
-  const [aiPrevMove, setAiPrevMove] = useState(0);
+  const [minimaxSwitch, setMinimaxSwitch] = useState(0);
 
   function aiRandomMove(board, player, availSpots) {
     const randomNum = Math.floor(Math.random() * availSpots.length);
     const randomIndex = availSpots[randomNum];
-    setAiPrevMove(randomIndex);
     board[randomIndex] = players[player];
   }
 
@@ -49,22 +48,16 @@ function Board() {
             (entry) => entry !== "X" && entry !== "O"
           );
           const newEntries = [...entries];
-          if (aiPrevMove % 2 === 0) {
-            const oddIndeices = availSpots.filter((spot) => spot % 2 !== 0);
-            if (oddIndeices.length) {
-              setAiPrevMove(oddIndeices[0]);
-              newEntries[oddIndeices[0]] = players[player];
-            } else {
-              aiRandomMove(newEntries, player, availSpots);
-            }
+          if (minimaxSwitch < 2) {
+            const [_nextMoveScore, nextMove] = minimax(
+              newEntries,
+              players[player]
+            );
+            newEntries[nextMove] = players[player];
+            setMinimaxSwitch(minimaxSwitch + 1);
           } else {
-            const evenIndeices = availSpots.filter((spot) => spot % 2 === 0);
-            if (evenIndeices.length) {
-              setAiPrevMove(evenIndeices[0]);
-              newEntries[evenIndeices[0]] = players[player];
-            } else {
-              aiRandomMove(newEntries, player, availSpots);
-            }
+            aiRandomMove(newEntries, player, availSpots);
+            setMinimaxSwitch(0);
           }
           nextTurn(newEntries);
         } else if (!gameOver && player !== mainPlayer && mode === "hard") {
@@ -81,7 +74,7 @@ function Board() {
   }, [player, gameOver]);
 
   return (
-    <div className="board">
+    <div className="mt-8 grid grid-rows-3 grid-cols-3 board fadeIn">
       {entries.map((entry, index) => (
         <Entry key={index} entry={entry} index={index} />
       ))}
