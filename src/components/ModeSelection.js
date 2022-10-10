@@ -30,7 +30,7 @@ function ModeSelection({ setMountSecondSlide, slideToGame, setSlideToGame }) {
           setTimeout(() => {
             setMountSecondSlide(false);
             resetBoard();
-            setScores({ X: 0, O: 0, Drew: 0 });
+            setScores({ X: 0, O: 0, Draw: 0 });
           }, 500);
         }}
       >

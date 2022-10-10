@@ -18,7 +18,7 @@ export function GameContextProvider({ children }) {
   const [endResult, setEndResult] = useState("");
   const [gameOver, setGameOver] = useState(false);
   const [winningIndeices, setWinningIndeices] = useState([]);
-  const [scores, setScores] = useState({ X: 0, O: 0, Drew: 0 });
+  const [scores, setScores] = useState({ X: 0, O: 0, Draw: 0 });
 
   function checkEndResult(board, player) {
     let allPositions = [];
@@ -41,10 +41,10 @@ export function GameContextProvider({ children }) {
     }
 
     if (count === 8) {
-      setEndResult("Drew");
+      setEndResult("Draw");
       setGameOver(true);
       setScores((scores) => {
-        scores.Drew += 1;
+        scores.Draw += 1;
         return scores;
       });
     }

@@ -18,8 +18,8 @@ function AgainScreen({ fadeOutAgain, setFadeOutAgain }) {
     switch (result) {
       case "":
         return "";
-      case "Drew":
-        return "drew!";
+      case "Draw":
+        return "draw!";
       case players[mainPlayer]:
         return playerMode === "single" ? "you won!" : "p1 won!";
       default:

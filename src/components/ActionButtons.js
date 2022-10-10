@@ -13,7 +13,7 @@ function ActionButtons({ setFadeOutAgain, setSlideOutFull, setTextHidden }) {
     }, 200);
     setTimeout(() => {
       resetBoard();
-      setScores({ X: 0, O: 0, Drew: 0 });
+      setScores({ X: 0, O: 0, Draw: 0 });
       navigate("/");
       setSlideOutFull(false);
     }, 500);
@@ -22,7 +22,7 @@ function ActionButtons({ setFadeOutAgain, setSlideOutFull, setTextHidden }) {
     setFadeOutAgain(true);
     setTimeout(() => {
       resetBoard();
-      setScores({ X: 0, O: 0, Drew: 0 });
+      setScores({ X: 0, O: 0, Draw: 0 });
       setFadeOutAgain(false);
     }, 300);
   }
