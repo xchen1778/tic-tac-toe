@@ -74,7 +74,7 @@ function Board() {
   }, [player, gameOver]);
 
   return (
-    <div className="mt-8 grid grid-rows-3 grid-cols-3 board fadeIn">
+    <div className="mt-8 grid grid-rows-3 grid-cols-3 board fadeIn absolute md:static">
       {entries.map((entry, index) => (
         <Entry key={index} entry={entry} index={index} />
       ))}

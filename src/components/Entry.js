@@ -35,8 +35,8 @@ function Entry({ entry, index }) {
         gameOver ||
         (player !== mainPlayer && playerMode === "single")
       }
-      className={`border-4 border-solid border-yellow bg-verylightyellow transition-all duration-300 ease-out font-text text-9xl text-darkyellow pt-6 enabled:hover:bg-solightyellow entry ${
-        winningIndeices.includes(index) ? "bg-creamwhite" : ""
+      className={`border-4 border-solid border-yellow bg-verylightyellow transition-all duration-300 ease-out font-text text-7xl md:text-9xl text-darkyellow pt-3 md:pt-6 enabled:hover:bg-solightyellow entry ${
+        winningIndeices.includes(index) ? "winner" : ""
       }`}
     >
       {entry === "X" || entry === "O" ? entry : ""}

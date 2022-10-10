@@ -6,7 +6,7 @@ import Game from "./pages/Game";
 
 function App() {
   return (
-    <div className="app">
+    <div className="overflow-x-hidden">
       <Router>
         <BackgroundText />
         <Routes>

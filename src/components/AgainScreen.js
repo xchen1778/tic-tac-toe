@@ -33,11 +33,11 @@ function AgainScreen({ fadeOutAgain, setFadeOutAgain }) {
         fadeOutAgain ? "fadeOut2" : "fadeIn2"
       }`}
     >
-      <div className="font-sans text-dark text-8xl">
+      <div className="font-sans text-dark text-6xl md:text-8xl message">
         {resultMessage(endResult)}
       </div>
       <button
-        className="font-sans bg-lightyellow text-dark  text-2xl rounded-full flex items-center gap-2 hover:bg-creamwhite back-button transition-colors duration-300 ease-out absolute bottom-10 againbutton"
+        className="font-sans bg-creamwhite text-dark  text-2xl rounded-full flex items-center gap-2 hover:bg-dark hover:text-creamwhite back-button transition-colors duration-300 ease-out absolute  bottom-28 md:bottom-10 againbutton"
         onClick={handleAgain}
       >
         <ReplayIcon /> again

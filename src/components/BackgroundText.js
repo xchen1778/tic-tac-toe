@@ -32,6 +32,7 @@ function BackgroundText() {
           navigate("/player-selection");
         }
       }}
+      className="overflow-x-hidden"
     >
       <div
         className={`marquee1 whitespace-nowrap absolute top-0 left-0 ${

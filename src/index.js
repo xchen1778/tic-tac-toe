@@ -7,6 +7,8 @@ import { GameContextProvider } from "./contexts/game.context";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <GameContextProvider>
-    <App />
+    <div className="overflow-hidden">
+      <App />
+    </div>
   </GameContextProvider>
 );

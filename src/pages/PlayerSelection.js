@@ -13,7 +13,7 @@ function PlayerSelection() {
   const [slideToGame, setSlideToGame] = useState(false);
   return (
     <div>
-      <h1 className="font-display text-10xl leading-1 text-yellow absolute left-24 bottom-16">
+      <h1 className="font-display text-9xl lg:text-10xl leading-1 text-yellow absolute left-16 lg:left-24 bottom-12 lg:bottom-16">
         tic
         <br />
         tac
@@ -22,7 +22,7 @@ function PlayerSelection() {
       </h1>
 
       <div
-        className={`font-sans bg-yellow absolute right-0 w-7/12 h-screen z-10 pl-32 text-dark slideIn ${
+        className={`font-sans bg-yellow absolute right-0 w-screen md:w-7/12 h-screen z-10 pl-10 sm:pl-20 lg:pl-32 text-dark slideIn ${
           unmountingFirstSlide ? "slideOut" : ""
         } ${slideToGame ? "slidetoleft" : ""}`}
       >
@@ -38,10 +38,10 @@ function PlayerSelection() {
         >
           <HomeIcon />
         </button>
-        <h2 className="text-7xl absolute top-48">
+        <h2 className="text-6xl md:text-7xl absolute top-48">
           chose <br /> play mode。
         </h2>
-        <div className="flex flex-col gap-8 absolute bottom-20">
+        <div className="flex flex-col gap-8 absolute bottom-32 md:bottom-20">
           <button
             className=" bg-lightyellow self-start text-3xl rounded-full flex items-center gap-8 hover:bg-creamwhite slide-button transition-colors duration-300 ease-out"
             onClick={() => {

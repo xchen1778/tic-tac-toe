@@ -19,7 +19,7 @@ function ModeSelection({ setMountSecondSlide, slideToGame, setSlideToGame }) {
 
   return (
     <div
-      className={`font-sans bg-yellow absolute right-0 w-7/12 h-screen z-10 pl-32 text-dark slideIn drop-shadow-2xl ${
+      className={`font-sans bg-yellow absolute right-0 w-screen md:w-7/12 h-screen z-10 pl-10 sm:pl-20 lg:pl-32 text-dark slideIn drop-shadow-2xl ${
         unmountingSlide ? "slideOut" : ""
       } ${slideToGame ? "slidetoleft" : ""}`}
     >
@@ -37,11 +37,16 @@ function ModeSelection({ setMountSecondSlide, slideToGame, setSlideToGame }) {
         <ArrowBackIcon />
       </button>
 
-      <form onSubmit={handleSubmit} className="mt-48 flex flex-col gap-20">
-        <div className="flex flex-col gap-8">
-          <h2 className="font-sans text-7xl text-dark ">pick level。</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="mt-48 flex flex-col gap-14 sm:gap-20"
+      >
+        <div className="flex flex-col gap-6">
+          <h2 className="font-sans text-5xl md:text-7xl text-dark ">
+            pick level。
+          </h2>
           <div
-            className="flex gap-12"
+            className="flex flex-col md:flex-row gap-6 sm:gap-12"
             onChange={(e) => setMode(e.target.value)}
           >
             <input
@@ -54,9 +59,9 @@ function ModeSelection({ setMountSecondSlide, slideToGame, setSlideToGame }) {
             />
             <label
               htmlFor="mode1"
-              className="text-lightyellow text-4xl cursor-pointer transition-colors duration-300 ease-out hover:text-creamwhite"
+              className="text-lightyellow text-3xl lg:text-4xl cursor-pointer transition-colors duration-300 ease-out hover:text-creamwhite"
             >
-              Easy
+              easy
             </label>
             <input
               type="radio"
@@ -67,9 +72,9 @@ function ModeSelection({ setMountSecondSlide, slideToGame, setSlideToGame }) {
             />
             <label
               htmlFor="mode2"
-              className="text-lightyellow text-4xl cursor-pointer transition-colors duration-300 ease-out hover:text-creamwhite"
+              className="text-lightyellow text-3xl lg:text-4xl cursor-pointer transition-colors duration-300 ease-out hover:text-creamwhite"
             >
-              Medium
+              medium
             </label>
             <input
               type="radio"
@@ -80,16 +85,18 @@ function ModeSelection({ setMountSecondSlide, slideToGame, setSlideToGame }) {
             />
             <label
               htmlFor="mode3"
-              className="text-lightyellow text-4xl cursor-pointer transition-colors duration-300 ease-out hover:text-creamwhite"
+              className="text-lightyellow text-3xl lg:text-4xl cursor-pointer transition-colors duration-300 ease-out hover:text-creamwhite"
             >
-              Hard
+              hard
             </label>
           </div>
         </div>
-        <div className="flex flex-col gap-8">
-          <h2 className="font-sans text-7xl text-dark ">pick side。</h2>
+        <div className="flex flex-col gap-6">
+          <h2 className="font-sans text-5xl md:text-7xl text-dark ">
+            pick side。
+          </h2>
           <div
-            className="flex gap-12"
+            className="flex gap-8 sm:gap-12"
             onChange={(e) => setMainPlayer(parseInt(e.target.value))}
           >
             <input
@@ -102,7 +109,7 @@ function ModeSelection({ setMountSecondSlide, slideToGame, setSlideToGame }) {
             />
             <label
               htmlFor="player1"
-              className="text-lightyellow text-4xl cursor-pointer transition-colors duration-300 ease-out hover:text-creamwhite"
+              className="text-lightyellow text-3xl sm:text-4xl cursor-pointer transition-colors duration-300 ease-out hover:text-creamwhite"
             >
               X
             </label>
@@ -115,13 +122,13 @@ function ModeSelection({ setMountSecondSlide, slideToGame, setSlideToGame }) {
             />
             <label
               htmlFor="player2"
-              className="text-lightyellow text-4xl cursor-pointer transition-colors duration-300 ease-out hover:text-creamwhite"
+              className="text-lightyellow text-3xl sm:text-4xl cursor-pointer transition-colors duration-300 ease-out hover:text-creamwhite"
             >
               O
             </label>
           </div>
         </div>
-        <button className="bg-lightyellow self-start text-3xl rounded-full flex items-center gap-8 hover:bg-creamwhite slide-button transition-colors duration-300 ease-out absolute bottom-20">
+        <button className=" bg-creamwhite md:bg-lightyellow self-start text-2xl md:text-3xl rounded-full flex items-center gap-8 hover:bg-dark hover:text-creamwhite md:hover:text-dark md:hover:bg-creamwhite back-button md:slide-button transition-colors duration-300 ease-out absolute bottom-20 play-button">
           play
         </button>
       </form>

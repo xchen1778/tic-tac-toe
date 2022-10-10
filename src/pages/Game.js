@@ -4,6 +4,7 @@ import Board from "../components/Board";
 import AgainScreen from "../components/AgainScreen";
 import ScoreDisplay from "../components/ScoreDisplay";
 import GameContext from "../contexts/game.context";
+import MobileScoreDisplay from "../components/MobileScoreDisplay";
 
 function Game() {
   const { gameOver } = useContext(GameContext);
@@ -13,7 +14,7 @@ function Game() {
   return (
     <div>
       <div
-        className={`absolute top-0 left-0 z-20 h-screen w-8/12 bg-yellow flex flex-col justify-center items-center ${
+        className={`absolute top-0 left-0 z-20 h-screen w-screen md:w-8/12 bg-yellow flex flex-col justify-center items-center ${
           slideOutFull ? "slideOutFull" : ""
         }`}
       >
@@ -22,6 +23,7 @@ function Game() {
           setSlideOutFull={setSlideOutFull}
           setTextHidden={setTextHidden}
         />
+        <MobileScoreDisplay />
         <Board />
         {gameOver && (
           <AgainScreen

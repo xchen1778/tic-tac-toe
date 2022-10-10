@@ -1,3 +1,11 @@
 input[type="radio"]:checked + label {
   color: #fff3cd;
 }
+
+@media screen and (max-width: 768px) {
+  .play-button {
+    top: 2.5rem;
+    right: 2.5rem;
+    bottom: auto;
+  }
+}

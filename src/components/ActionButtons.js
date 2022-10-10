@@ -1,7 +1,6 @@
 import { useContext } from "react";
 import GameContext from "../contexts/game.context";
 import { useNavigate } from "react-router-dom";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import HomeIcon from "@mui/icons-material/Home";
 
 function ActionButtons({ setFadeOutAgain, setSlideOutFull, setTextHidden }) {
@@ -29,7 +28,7 @@ function ActionButtons({ setFadeOutAgain, setSlideOutFull, setTextHidden }) {
   }
 
   return (
-    <div className="flex justify-between pl-14 pr-14 absolute w-full top-10 fadeIn z-40">
+    <div className="flex justify-between px-8 md:px-14 absolute w-full top-10 fadeIn z-40">
       <button
         className="bg-lightyellow self-start text-3xl rounded-full flex items-center gap-8 hover:bg-creamwhite back-button transition-colors duration-300 ease-out"
         onClick={handleRestart}

@@ -4,23 +4,28 @@
 
 @import "./variables";
 @import "./resets";
-@import "./app";
 @import "./backgroundtext";
 @import "./landing";
 @import "./playerselection";
 @import "./modeselection";
-@import "./game";
 @import "./board";
 @import "./entry";
 @import "./againscreen";
 @import "./scoredisplay";
+@import "./mobilescoredisplay";
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  user-select: none;
+}
 
 body {
   background-color: #222;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
-  user-select: none;
 }
 
 .fadeIn {
@@ -57,4 +62,10 @@ body {
 
 .slideOutFull {
   animation: slideOutFull 500ms ease-out;
+}
+
+@media screen and (max-width: 768px) {
+  .slidetoleft {
+    animation: none;
+  }
 }

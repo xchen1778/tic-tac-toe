@@ -2,3 +2,11 @@
   width: 32rem;
   height: 32rem;
 }
+
+@media screen and (max-width: 768px) {
+  .board {
+    top: 20rem;
+    width: 80vw;
+    height: 80vw;
+  }
+}

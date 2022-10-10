@@ -21,7 +21,6 @@ function Landing() {
         <div className="w-screen h-screen bg-verydark absolute top-0 blackscreen"></div>
       )}
       <div
-        className="fadeIn"
         onClick={() => {
           if (!move) {
             setMove(true);
@@ -29,14 +28,14 @@ function Landing() {
           }
         }}
       >
-        <h1 className="font-display text-10xl leading-1 text-yellow absolute left-24 bottom-16">
+        <h1 className="font-display text-9xl lg:text-10xl leading-1 text-yellow absolute left-16 lg:left-24 bottom-12 lg:bottom-16">
           tic
           <br />
           tac
           <br />
           toe
         </h1>
-        <p className="font-body text-base leading-2 text-offwhite w-40 absolute right-24 top-24">
+        <p className="font-body text-sm lg:text-base text-offwhite w-40 absolute ml-16 lg:right-24 top-24 fadeIn">
           click anywhere to start the game!
         </p>
       </div>
